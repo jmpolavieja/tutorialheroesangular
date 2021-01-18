@@ -13,6 +13,7 @@ import {Hero} from '../Interfaces/hero';
 export class HeroDetailComponent implements OnInit {
 
   hero: Hero;
+  desabilitado: boolean;
 
   constructor(
     private heroService: HeroService,
@@ -20,8 +21,11 @@ export class HeroDetailComponent implements OnInit {
     private location: Location
   ) { }
 
+
+
   ngOnInit() {
     this.getHero();
+    this.desabilitado = false;
   }
 
   getHero() {
@@ -30,4 +34,7 @@ export class HeroDetailComponent implements OnInit {
       .subscribe(hero => this.hero=hero);
   }
 
+  goBack() {
+    this.location.back();
+  }
 }
